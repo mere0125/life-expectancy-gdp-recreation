@@ -18,6 +18,8 @@ Codex helped inspect the original chart’s layout, typography, colors, spacing,
 
 After reviewing the first complete version, I rejected a generic rounded-card and gradient treatment and asked for a visual identity that felt authored rather than AI-generated. Codex helped reinterpret the surrounding interface as an architectural study sheet: a midnight drafting-grid background, warm paper canvas, monospaced project metadata, technical rules, hard-edged controls, print-like offset shadows, and clearer label halos. It also helped add a click-to-pin interaction with axis guide lines and a persistent country readout. The original chart's data encodings and composition were preserved.
 
+I then asked for a more advanced opening interaction that would feel like entering a research book. Codex helped create a two-stage, three-dimensional page-turn sequence: a clothbound cover opens along a visible spine, reveals a typeset research question, and then leads into the main visualization. The introduction includes keyboard controls, a skip option, a compact mobile composition, and a reduced-motion alternative.
+
 I reviewed the reference, the data, and the generated files and remain responsible for the final design, source attribution, data treatment, and understanding how the code works.
 
 ## Sources

@@ -6,7 +6,70 @@
   <title>Life expectancy vs. GDP per capita — Mere Cui</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="book-locked">
+  <section id="book-intro" class="book-intro" role="dialog" aria-modal="true" aria-labelledby="book-title">
+    <button id="skip-intro" class="skip-intro" type="button">Skip introduction</button>
+
+    <div class="book-stage">
+      <div class="book-leaf book-left-page" aria-hidden="true">
+        <div class="inside-grid"></div>
+        <p class="folio-label">Visual Study / 03</p>
+        <p class="inside-note">Position / scale / color / population</p>
+        <p class="inside-citation">Reference: Our World in Data<br>Reconstructed by Mere Cui</p>
+        <span class="folio-number">00</span>
+      </div>
+
+      <div class="book-leaf book-right-page">
+        <div class="chapter-number">01</div>
+        <p class="chapter-kicker">The question</p>
+        <h2>What becomes visible when income and longevity share the same field?</h2>
+        <p>
+          A coded reconstruction of a public visualization, extended into an instrument for moving through time, filtering regions, and pinning individual countries.
+        </p>
+        <button id="enter-study" class="enter-study" type="button" disabled>Enter visualization <span aria-hidden="true">→</span></button>
+        <span class="folio-number">01</span>
+      </div>
+
+      <div class="book-cover">
+        <div class="cover-face cover-front">
+          <div class="cover-rule"></div>
+          <p class="cover-series">Data Studies / Fall 2026</p>
+          <h2 id="book-title">Life expectancy<br>vs. GDP per capita</h2>
+          <svg class="cover-diagram" viewBox="0 0 320 190" role="presentation">
+            <g class="cover-grid-lines">
+              <path d="M20 25H300M20 65H300M20 105H300M20 145H300"></path>
+              <path d="M55 10V170M115 10V170M175 10V170M235 10V170"></path>
+            </g>
+            <g class="cover-bubbles">
+              <circle cx="62" cy="134" r="7"></circle>
+              <circle cx="92" cy="118" r="10"></circle>
+              <circle cx="126" cy="108" r="6"></circle>
+              <circle cx="158" cy="81" r="16"></circle>
+              <circle cx="203" cy="69" r="9"></circle>
+              <circle cx="245" cy="47" r="13"></circle>
+              <circle cx="282" cy="39" r="5"></circle>
+            </g>
+          </svg>
+          <div class="cover-footer">
+            <span>Mere Cui</span>
+            <span>Visual Reverse-Engineering</span>
+          </div>
+          <button id="turn-page" class="turn-page" type="button" aria-label="Turn the cover page">
+            Turn page <span aria-hidden="true">↗</span>
+          </button>
+        </div>
+
+        <div class="cover-face cover-back">
+          <p class="back-index">00 / METHOD</p>
+          <blockquote>Reproduce the visible system. Then change how a reader can enter it.</blockquote>
+          <span class="folio-number">00</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="book-hint">Click “Turn page” or press the right arrow key.</p>
+  </section>
+
   <main class="page-shell">
     <section class="visualization" aria-labelledby="chart-title">
       <div class="sheet-meta" aria-label="Project information">
@@ -17,7 +80,7 @@
 
       <header class="chart-header">
         <div>
-          <h1 id="chart-title">Life expectancy vs. GDP per capita <span id="title-year">2022</span></h1>
+          <h1 id="chart-title" tabindex="-1">Life expectancy vs. GDP per capita <span id="title-year">2022</span></h1>
           <p class="subtitle">
             The period life expectancy at birth, in a given year. GDP per capita is adjusted for inflation and differences in living costs between countries.
           </p>

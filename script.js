@@ -5,6 +5,59 @@
   Coding assistance: OpenAI Codex. See AI_USAGE.md for documentation.
 */
 
+const bookIntro = document.querySelector("#book-intro");
+const turnPageButton = document.querySelector("#turn-page");
+const enterStudyButton = document.querySelector("#enter-study");
+const skipIntroButton = document.querySelector("#skip-intro");
+const chartTitle = document.querySelector("#chart-title");
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+function turnBookPage() {
+  if (bookIntro.classList.contains("is-open")) return;
+
+  bookIntro.classList.add("is-open");
+  turnPageButton.disabled = true;
+  enterStudyButton.disabled = false;
+  window.setTimeout(function() {
+    enterStudyButton.focus();
+  }, reduceMotion.matches ? 20 : 1080);
+}
+
+function closeBookIntro() {
+  bookIntro.classList.add("is-leaving");
+  document.body.classList.remove("book-locked");
+  window.setTimeout(function() {
+    bookIntro.hidden = true;
+    chartTitle.focus();
+  }, reduceMotion.matches ? 20 : 520);
+}
+
+turnPageButton.addEventListener("click", turnBookPage);
+enterStudyButton.addEventListener("click", closeBookIntro);
+skipIntroButton.addEventListener("click", closeBookIntro);
+
+document.addEventListener("keydown", function(event) {
+  if (bookIntro.hidden || bookIntro.classList.contains("is-leaving")) return;
+
+  if (event.key === "ArrowRight") {
+    event.preventDefault();
+    if (bookIntro.classList.contains("is-open")) {
+      closeBookIntro();
+    } else {
+      turnBookPage();
+    }
+  }
+
+  if (event.key === "Escape") {
+    event.preventDefault();
+    closeBookIntro();
+  }
+});
+
+window.requestAnimationFrame(function() {
+  turnPageButton.focus();
+});
+
 const chartWidth = 850;
 const chartHeight = 470;
 const margin = { top: 42, right: 150, bottom: 58, left: 55 };
@@ -107,9 +160,9 @@ d3.csv("data/life-expectancy-vs-gdp-per-capita.csv").then(function(rawData) {
     return d.code &&
       d.year >= 1990 &&
       d.year <= 2022 &&
-      Number.isFinite(d.lifeExpectancy) &&
-      Number.isFinite(d.gdpPerCapita) &&
-      Number.isFinite(d.population) &&
+      Number.isFinite(d.lifeExpectancy) && d.lifeExpectancy > 0 &&
+      Number.isFinite(d.gdpPerCapita) && d.gdpPerCapita > 0 &&
+      Number.isFinite(d.population) && d.population > 0 &&
       regionColors.has(d.region);
   });
 

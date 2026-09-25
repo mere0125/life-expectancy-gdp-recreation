@@ -20,14 +20,15 @@ It was created for the Visual Reverse-Engineering assignment in *Data Visualizat
 
 ## Added interactions
 
-1. **Year exploration:** drag the 1990–2022 slider to update every country, or press Play to animate through time.
-2. **Region filtering:** toggle any region on or off with the buttons above the chart.
-3. **Hover and keyboard details:** hover over or focus a bubble to highlight it and see exact values in a tooltip.
-4. **Pinned comparison:** click a country to keep its values visible and draw precise horizontal and vertical guide lines to both axes.
+1. **Research-book introduction:** turn a three-dimensional clothbound cover to reveal the research question, then enter the visualization. The sequence also works with the right-arrow and Escape keys and adapts for reduced-motion settings.
+2. **Year exploration:** drag the 1990–2022 slider to update every country, or press Play to animate through time.
+3. **Region filtering:** toggle any region on or off with the buttons above the chart.
+4. **Hover and keyboard details:** hover over or focus a bubble to highlight it and see exact values in a tooltip.
+5. **Pinned comparison:** click a country to keep its values visible and draw precise horizontal and vertical guide lines to both axes.
 
 ## Personal visual direction
 
-The surrounding interface is treated as an architectural study sheet rather than a generic web dashboard. A midnight drafting-grid background, warm paper canvas, registration line, monospaced sheet metadata, hard-edged controls, and offset print-like shadows establish a visual identity separate from the reproduced OWID chart while keeping the chart itself recognizable.
+The surrounding interface is treated as an architectural research publication rather than a generic web dashboard. It opens as a clothbound study book with a coded diagram on its cover and a typeset research question inside. The visualization continues the same visual system through a midnight drafting-grid background, warm paper canvas, registration line, monospaced sheet metadata, hard-edged controls, and offset print-like shadows. This gives the project a distinct identity while keeping the reproduced OWID chart recognizable.
 
 ## Files
 
