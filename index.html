@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Life expectancy vs. GDP per capita — Mere Cui</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="visualization" aria-labelledby="chart-title">
+      <header class="chart-header">
+        <div>
+          <h1 id="chart-title">Life expectancy vs. GDP per capita <span id="title-year">2022</span></h1>
+          <p class="subtitle">
+            The period life expectancy at birth, in a given year. GDP per capita is adjusted for inflation and differences in living costs between countries.
+          </p>
+        </div>
+        <div class="owid-mark" aria-label="Our World in Data">
+          <span>Our World</span>
+          <span>in Data</span>
+        </div>
+      </header>
+
+      <section class="controls" aria-label="Interactive controls">
+        <div class="time-controls">
+          <button id="play-button" class="play-button" type="button" aria-label="Play years">
+            <span class="play-icon" aria-hidden="true">▶</span>
+            <span class="play-label">Play</span>
+          </button>
+          <label for="year-slider">Year</label>
+          <input id="year-slider" type="range" min="1990" max="2022" step="1" value="2022">
+          <output id="year-output" for="year-slider">2022</output>
+        </div>
+        <div id="region-filters" class="region-filters" aria-label="Filter by world region"></div>
+      </section>
+
+      <div class="chart-frame">
+        <svg id="bubble-chart" viewBox="0 0 850 470" role="img" aria-labelledby="chart-title chart-description">
+          <desc id="chart-description">
+            An interactive bubble chart comparing life expectancy and GDP per capita. Bubble size represents population and color represents world region.
+          </desc>
+        </svg>
+        <div id="tooltip" class="tooltip" role="status" aria-live="polite"></div>
+      </div>
+
+      <footer class="chart-footer">
+        <p><strong>Data source:</strong> Riley (2005); Zijdeman et al. (2015); HMD (2025); UN WPP (2024); Bolt and van Zanden – Maddison Project Database 2023</p>
+        <p><strong>Note:</strong> GDP per capita is expressed in international-$ at 2011 prices.</p>
+        <p>OurWorldinData.org/life-expectancy | CC BY</p>
+      </footer>
+    </section>
+
+    <section class="project-notes">
+      <div>
+        <p class="kicker">Visual reverse-engineering study</p>
+        <h2>Rebuilt from observation, then extended through interaction.</h2>
+        <p>
+          This page is an independent HTML/CSS/JavaScript recreation of an
+          <a href="https://ourworldindata.org/grapher/life-expectancy-vs-gdp-per-capita?time=2022" target="_blank" rel="noopener noreferrer">Our World in Data visualization</a>.
+          It does not embed or iframe the original.
+        </p>
+      </div>
+      <details>
+        <summary>Compare with the original screenshot</summary>
+        <img src="assets/original-visualization.png" alt="Original Our World in Data chart showing life expectancy versus GDP per capita in 2022">
+      </details>
+    </section>
+  </main>
+
+  <script src="vendor/d3.v7.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
