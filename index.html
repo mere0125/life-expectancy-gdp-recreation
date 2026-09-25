@@ -9,6 +9,12 @@
 <body>
   <main class="page-shell">
     <section class="visualization" aria-labelledby="chart-title">
+      <div class="sheet-meta" aria-label="Project information">
+        <span>Mere Cui</span>
+        <span>Visual Study / 03</span>
+        <span>25 Sep 2026</span>
+      </div>
+
       <header class="chart-header">
         <div>
           <h1 id="chart-title">Life expectancy vs. GDP per capita <span id="title-year">2022</span></h1>
@@ -34,6 +40,11 @@
         </div>
         <div id="region-filters" class="region-filters" aria-label="Filter by world region"></div>
       </section>
+
+      <div id="selection-readout" class="selection-readout" aria-live="polite">
+        <span class="readout-index">SELECT</span>
+        <span class="readout-message">Click a country to pin its position and values.</span>
+      </div>
 
       <div class="chart-frame">
         <svg id="bubble-chart" viewBox="0 0 850 470" role="img" aria-labelledby="chart-title chart-description">

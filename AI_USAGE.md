@@ -16,7 +16,7 @@ After comparing possible references, Codex helped select Our World in Data’s �
 
 Codex helped inspect the original chart’s layout, typography, colors, spacing, axes, logarithmic scale, labels, legends, and source notes. It helped write and comment the D3 code used to load the local CSV, calculate positions and bubble sizes, reproduce the static 2022 composition, and add a year slider with playback, region filters, animated transitions, keyboard-accessible bubbles, and hover tooltips. Codex also helped prepare the repository structure, README, attribution, local testing, and deployment.
 
-After reviewing the first complete version, I asked for a more polished visual treatment. Codex helped refine the surrounding page with a pale blue-lavender background, a softer editorial card, pill-shaped controls, clearer label halos, and a lighter reference section while preserving the original chart's data encodings and composition.
+After reviewing the first complete version, I rejected a generic rounded-card and gradient treatment and asked for a visual identity that felt authored rather than AI-generated. Codex helped reinterpret the surrounding interface as an architectural study sheet: a midnight drafting-grid background, warm paper canvas, monospaced project metadata, technical rules, hard-edged controls, print-like offset shadows, and clearer label halos. It also helped add a click-to-pin interaction with axis guide lines and a persistent country readout. The original chart's data encodings and composition were preserved.
 
 I reviewed the reference, the data, and the generated files and remain responsible for the final design, source attribution, data treatment, and understanding how the code works.
 

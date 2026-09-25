@@ -53,11 +53,13 @@ const titleYear = document.querySelector("#title-year");
 const playButton = document.querySelector("#play-button");
 const playLabel = document.querySelector(".play-label");
 const playIcon = document.querySelector(".play-icon");
+const selectionReadout = document.querySelector("#selection-readout .readout-message");
 
 let currentYear = 2022;
 let activeRegions = new Set(regionColors.keys());
 let rowsByYear = new Map();
 let playTimer = null;
+let selectedCode = null;
 
 const xScale = d3.scaleLog()
   .domain([500, 160000])
@@ -81,6 +83,7 @@ svg.append("defs")
   .attr("height", plotBottom - margin.top);
 
 const plot = svg.append("g").attr("class", "plot");
+const selectionLayer = svg.append("g").attr("class", "selection-layer");
 const bubbleLayer = svg.append("g")
   .attr("class", "bubble-layer")
   .attr("clip-path", "url(#plot-clip)");
@@ -312,7 +315,16 @@ function updateChart(animate) {
     .style("opacity", 0.88)
     .on("mouseenter focus", showTooltip)
     .on("mousemove", moveTooltip)
-    .on("mouseleave blur", hideTooltip);
+    .on("mouseleave blur", hideTooltip)
+    .on("click", function(event, d) {
+      event.stopPropagation();
+
+      if (selectedCode === d.code) {
+        clearSelection();
+      } else {
+        pinCountry(d);
+      }
+    });
 
   bubblesEnter.merge(bubbles)
     .attr("aria-label", function(d) {
@@ -324,6 +336,9 @@ function updateChart(animate) {
     .attr("r", function(d) { return radiusScale(d.population); })
     .attr("fill", function(d) { return regionColors.get(d.region); })
     .style("opacity", 0.88);
+
+  bubbleLayer.selectAll("circle")
+    .classed("is-selected", function(d) { return d.code === selectedCode; });
 
   const labelData = yearData.filter(function(d) {
     return labelOffsets.has(d.entity);
@@ -352,6 +367,63 @@ function updateChart(animate) {
     .attr("y", function(d) {
       return yScale(d.lifeExpectancy) + labelOffsets.get(d.entity)[1];
     });
+
+  updatePinnedSelection(yearData);
+}
+
+function pinCountry(d) {
+  selectedCode = d.code;
+  bubbleLayer.selectAll("circle")
+    .classed("is-selected", function(other) { return other.code === selectedCode; });
+  drawSelectionGuides(d);
+  updateSelectionReadout(d);
+}
+
+function updatePinnedSelection(yearData) {
+  if (!selectedCode) return;
+
+  const selectedDatum = yearData.find(function(d) {
+    return d.code === selectedCode;
+  });
+
+  if (selectedDatum) {
+    drawSelectionGuides(selectedDatum);
+    updateSelectionReadout(selectedDatum);
+  } else {
+    clearSelection();
+  }
+}
+
+function drawSelectionGuides(d) {
+  const x = xScale(d.gdpPerCapita);
+  const y = yScale(d.lifeExpectancy);
+
+  selectionLayer.selectAll("line")
+    .data([
+      { x1: margin.left, y1: y, x2: x, y2: y },
+      { x1: x, y1: y, x2: x, y2: plotBottom }
+    ])
+    .join("line")
+    .attr("class", "selection-guide")
+    .attr("x1", function(line) { return line.x1; })
+    .attr("y1", function(line) { return line.y1; })
+    .attr("x2", function(line) { return line.x2; })
+    .attr("y2", function(line) { return line.y2; });
+}
+
+function updateSelectionReadout(d) {
+  selectionReadout.innerHTML =
+    `<strong>${d.entity}</strong> / ${d.year} / ` +
+    `LIFE ${d.lifeExpectancy.toFixed(1)} YRS / ` +
+    `GDP ${formatCurrency(d.gdpPerCapita)} / ` +
+    `POP ${formatPopulation(d.population).toUpperCase()}`;
+}
+
+function clearSelection() {
+  selectedCode = null;
+  selectionLayer.selectAll("line").remove();
+  bubbleLayer.selectAll("circle").classed("is-selected", false);
+  selectionReadout.textContent = "Click a country to pin its position and values.";
 }
 
 function showTooltip(event, d) {

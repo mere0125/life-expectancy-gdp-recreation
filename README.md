@@ -23,6 +23,11 @@ It was created for the Visual Reverse-Engineering assignment in *Data Visualizat
 1. **Year exploration:** drag the 1990–2022 slider to update every country, or press Play to animate through time.
 2. **Region filtering:** toggle any region on or off with the buttons above the chart.
 3. **Hover and keyboard details:** hover over or focus a bubble to highlight it and see exact values in a tooltip.
+4. **Pinned comparison:** click a country to keep its values visible and draw precise horizontal and vertical guide lines to both axes.
+
+## Personal visual direction
+
+The surrounding interface is treated as an architectural study sheet rather than a generic web dashboard. A midnight drafting-grid background, warm paper canvas, registration line, monospaced sheet metadata, hard-edged controls, and offset print-like shadows establish a visual identity separate from the reproduced OWID chart while keeping the chart itself recognizable.
 
 ## Files
 
